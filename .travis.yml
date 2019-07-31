@@ -4,7 +4,7 @@ node_js:
 
 deploy:
   provider: surge
-  project: ./src/
+  project: ./dist/
   domain: devup-gallery.surge.sh
   on:
     branch: ci_test
