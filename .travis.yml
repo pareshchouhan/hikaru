@@ -6,3 +6,5 @@ deploy:
   provider: surge
   project: ./src/
   domain: devup-gallery.surge.sh
+  on:
+    branch: ci_test
