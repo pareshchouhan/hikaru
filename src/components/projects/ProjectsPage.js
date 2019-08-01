@@ -5,7 +5,7 @@ import { Dropdown, Grid, Header, Button, Container } from 'semantic-ui-react';
 import * as projectActions from '../../actions/projectActions';
 import ProjectList from './ProjectList';
 import TagsSearch from './TagsSearch';
-import { sortProjects } from './helpers';
+import { sortProjects, shuffle } from './helpers';
 
 const sortingOptions = [
   { text: 'Random', value: 'random' },
@@ -96,9 +96,9 @@ class ProjectsPage extends React.Component {
   }
 
   render() {
-    const { projectList, tagSearchValue } = this.state;
+    let { projectList, tagSearchValue } = this.state;
     const { tagSearchOptions } = this.props;
-
+    projectList = shuffle(projectList);
     return (
       <Container>
         <Header size="large" color="grey" content="Gallery" />
