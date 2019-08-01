@@ -28,9 +28,17 @@ class ProjectsPage extends React.Component {
     this.handleSortChange = this.handleSortChange.bind(this);
   }
 
+  componentDidMount() {
+    const { sortValue } = this.state;
+    if (this.props.projects && this.props.projects.length > 0) {
+      this.setState({ projectList: sortProjects(this.props.projects, sortValue) });
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (nextProps.projects.length > 0) {
-      this.setState({ projectList: nextProps.projects });
+    if (nexProps.projects && nextProps.projects.length > 0) {
+      const { sortValue } = this.state;
+      this.setState({ projectList: sortProjects(nextProps.projects, sortValue) });
     }
   }
 
@@ -98,7 +106,7 @@ class ProjectsPage extends React.Component {
   render() {
     const { projectList, tagSearchValue } = this.state;
     const { tagSearchOptions } = this.props;
-
+    
     return (
       <Container>
         <Header size="large" color="grey" content="Gallery" />
